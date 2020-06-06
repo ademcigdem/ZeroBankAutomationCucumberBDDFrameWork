@@ -1,6 +1,7 @@
 package com.zerobank.stepdefnitions;
 
 
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.After;
@@ -16,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
-    Actions actions;
-    WebDriverWait wait;
+//    Actions actions;
+//    WebDriverWait wait;
 
     @Before
     public void setup(){
@@ -25,17 +26,17 @@ public class Hooks {
         driver.manage().window().maximize();
         driver.get(ConfigurationReader.get("url"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.get("implicitwait")), TimeUnit.SECONDS);
-        actions = new Actions(driver);
-        wait = new WebDriverWait(driver,(Long.parseLong(ConfigurationReader.get("explicitwait"))));
+//        actions = new Actions(driver);
+//        wait = new WebDriverWait(driver,(Long.parseLong(ConfigurationReader.get("explicitwait"))));
     }
 
     @After
     public void tearDown(Scenario scenario){
         if (scenario.isFailed()){
-
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot,"image/png","screenshot");
         }
+        BrowserUtils.waitFor(2);
 
         Driver.closeDriver();
     }

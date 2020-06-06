@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
         features = {"src\\test\\resources\\features"},
         glue = {"com\\zerobank\\stepdefnitions"},
 
-        dryRun = true,
-        tags = "@purchaseCurrency"
+        dryRun = false,
+        tags = "@ZB_003"
 )
 public class CukesRunner {
 }
