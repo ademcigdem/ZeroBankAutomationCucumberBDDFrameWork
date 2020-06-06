@@ -6,7 +6,7 @@ import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 
     @FindBy (id = "user_login")
     public WebElement userNameInput;
@@ -30,6 +30,13 @@ public class LoginPage {
     public void login(){
         userNameInput.sendKeys(ConfigurationReader.get("username"));
         passordInput.sendKeys(ConfigurationReader.get("password"));
+        signInBtn.click();
+        BrowserUtils.waitFor(2);
+    }
+
+    public void loginAs(String username,String password){
+        userNameInput.sendKeys(username);
+        passordInput.sendKeys(password);
         signInBtn.click();
         BrowserUtils.waitFor(2);
     }

@@ -2,13 +2,15 @@ package com.zerobank.pages;
 
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
+public abstract class BasePage {
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
@@ -64,20 +66,24 @@ public class BasePage {
      */
     public void logOut(){
         action.moveToElement(userNameBtn).click().pause(500).moveToElement(logoutLink).click().build().perform();
-     //   BrowserUtils.clickWithJS(logoutLink);
+      //  BrowserUtils.clickWithJS(logoutLink);
     }
 
     /**
-     * Method works for the navigate to all module.@
-     * @param moduleName
+     * Method works for the navigate to all tab.@
+     * @param tabName
      */
-    public void navigateToModule(String moduleName){
+    public void navigateToModule(String tabName){
         try{
-            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath("//a[.='"+moduleName+"']")));
-            Driver.get().findElement(By.xpath("//a[.='"+moduleName+"']")).click();
+        //    BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath("//a[.='"+tabName+"']")));
+            Driver.get().findElement(By.xpath("//a[.='"+tabName+"']")).click();
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void verifyToTitle(String expectedTitle){
+        Assert.assertEquals(expectedTitle, Driver.get().getTitle());
     }
 
 
