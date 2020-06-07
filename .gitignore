@@ -1,3 +1,6 @@
 /.idea/
 /target/
 /ZeroBankAutomationCucumberBDDFrameWork.iml
+/debug.log
+/hs_err_pid4212.log
+/replay_pid4212.log

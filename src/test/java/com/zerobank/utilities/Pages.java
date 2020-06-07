@@ -1,32 +1,42 @@
 package com.zerobank.utilities;
 
-import com.zerobank.pages.AccountActivity;
+import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.LoginPage;
+import com.zerobank.pages.PayBillsPage;
 
 public class Pages {
+
     private LoginPage loginPage;
     private AccountSummaryPage accountSummaryPage;
-    private AccountActivity accountActivity;
+    private AccountActivityPage accountActivityPage;
+    private PayBillsPage payBillsPage;
 
-    public LoginPage loginPage() {
+    public LoginPage loginPage(){
         if (loginPage == null) {
             loginPage = new LoginPage();
         }
         return loginPage;
     }
 
-    public AccountSummaryPage accountSummaryPage() {
+    public AccountSummaryPage accountSummary(){
         if (accountSummaryPage == null) {
             accountSummaryPage = new AccountSummaryPage();
         }
         return accountSummaryPage;
     }
 
-    public AccountActivity accountActivity() {
-        if (accountActivity == null) {
-            accountActivity = new AccountActivity();
+    public AccountActivityPage accountActivity() {
+        if (accountActivityPage == null) {
+            accountActivityPage = new AccountActivityPage();
         }
-        return accountActivity;
+        return accountActivityPage;
+    }
+
+    public PayBillsPage payBillsPage() {
+        if (payBillsPage == null) {
+            payBillsPage = new PayBillsPage();
+        }
+        return payBillsPage;
     }
 }
