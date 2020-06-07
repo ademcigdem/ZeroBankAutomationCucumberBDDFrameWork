@@ -1,20 +1,25 @@
 package com.zerobank.stepdefnitions;
 
+import com.zerobank.utilities.Driver;
 import com.zerobank.utilities.Pages;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
 
 import java.util.List;
 
 public class AccountSummaryStepDef {
-    Pages pages = new Pages();
+    Pages page = new Pages();
+
     @Then("following account types should be displayed")
-    public void following_account_types_should_be_displayed(List<String> accounTypeList) {
-       pages.accountSummaryPage().verifyAccountTypeListText(accounTypeList);
+    public void following_account_types_should_be_displayed(List<String> accountTypeList) {
+        page.accountSummary().verifyAccountTypeListText(accountTypeList);
     }
 
-    @Then("following colums at Credit Account table must have")
-    public void following_colums_at_table_must_have(List<String> tableColumns) {
-        pages.accountSummaryPage().verifyCreditCardTableColums(tableColumns);
+    @Then("following columns at Credit Accounts table should be displayed")
+    public void following_columns_at_table_should_be_displayed(List<String> tableColumnsList ) {
+        page.accountSummary().verifyCreditCardTableColumns(tableColumnsList);
     }
+
+
 
 }

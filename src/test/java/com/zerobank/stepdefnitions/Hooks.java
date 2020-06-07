@@ -17,8 +17,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
-//    Actions actions;
-//    WebDriverWait wait;
 
     @Before
     public void setup(){
@@ -26,8 +24,6 @@ public class Hooks {
         driver.manage().window().maximize();
         driver.get(ConfigurationReader.get("url"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.get("implicitwait")), TimeUnit.SECONDS);
-//        actions = new Actions(driver);
-//        wait = new WebDriverWait(driver,(Long.parseLong(ConfigurationReader.get("explicitwait"))));
     }
 
     @After

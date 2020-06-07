@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = {"com\\zerobank\\stepdefnitions"},
 
         dryRun = false,
-        tags = "@ZB_003"
+        tags = "@ZB_005"
 )
 public class CukesRunner {
 }
