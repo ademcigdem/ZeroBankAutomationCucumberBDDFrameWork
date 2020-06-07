@@ -54,14 +54,29 @@ public class AccountSummaryPage extends BasePage{
     @FindBy (xpath = "(//thead/tr[1])[4]//th")
     public List<WebElement> loanAccounttableHeaderList;
 
-    // (//h2[.='Cash Accounts'] /following-sibling::div //tr[1])[1]
-    //Specific module name and type name text element
 
-    public void verifyAccountTypeListText(List<String > expectedList){
-        assertEquals(expectedList,BrowserUtils.getElementsText(accountTypesList));
+
+
+    //  (//thead/tr[1])[1]    thead
+    //  //td//a[.='Savings']   rowlar stringle
+
+
+    public void verifyAccountTypeListText(List<String> expectedList){
+        Assert.assertEquals(expectedList, BrowserUtils.getElementsText(accountTypesList));
     }
 
-    public void verifyCreditCardTableColums(List<String> tableColumnList){
-        assertEquals(tableColumnList, BrowserUtils.getElementsText(creditCardAccounttableHeaderList));
+    public void verifyCreditCardTableColumns (List<String> tableColumnsList){
+        // String table names.....
+        ////h2[.='Cash Accounts'] /following-sibling::div //tr[1])[1]
+        Assert.assertEquals(tableColumnsList, BrowserUtils.getElementsText(creditCardAccounttableHeaderList));
+    }
+
+
+    /**
+     * This method will click given account's link
+     * @param accountName
+     */
+    public void clickAccountLink(String accountName){
+        Driver.get().findElement(By.xpath("//td/a[.='"+accountName+"']")).click();
     }
 }
