@@ -1,9 +1,10 @@
 package com.zerobank.utilities;
 
-import com.zerobank.pages.AccountActivityPage;
-import com.zerobank.pages.AccountSummaryPage;
-import com.zerobank.pages.LoginPage;
-import com.zerobank.pages.PayBillsPage;
+import com.zerobank.pages.*;
+import com.zerobank.pages.pay_bills.AddNewPayeeSubTab;
+import com.zerobank.pages.pay_bills.PayBillsPage;
+import com.zerobank.pages.pay_bills.PaySavedPayeeSubTab;
+import com.zerobank.pages.pay_bills.PurchaseForeignCurrencySubTab;
 
 public class Pages {
 
@@ -11,6 +12,10 @@ public class Pages {
     private AccountSummaryPage accountSummaryPage;
     private AccountActivityPage accountActivityPage;
     private PayBillsPage payBillsPage;
+    private PaySavedPayeeSubTab paySavedPayeeSubTab;
+    private AddNewPayeeSubTab addNewPayeeSubTab;
+    private PurchaseForeignCurrencySubTab purchaseForeignCurrencySubTab;
+
 
     public LoginPage loginPage(){
         if (loginPage == null) {
@@ -38,5 +43,26 @@ public class Pages {
             payBillsPage = new PayBillsPage();
         }
         return payBillsPage;
+    }
+
+    public PaySavedPayeeSubTab paySavedPayeeSubTab() {
+        if (paySavedPayeeSubTab == null) {
+            paySavedPayeeSubTab = new PaySavedPayeeSubTab();
+        }
+        return paySavedPayeeSubTab;
+    }
+
+    public AddNewPayeeSubTab addNewPayeeSubTab() {
+        if (addNewPayeeSubTab == null) {
+            addNewPayeeSubTab = new AddNewPayeeSubTab();
+        }
+        return addNewPayeeSubTab;
+    }
+
+    public PurchaseForeignCurrencySubTab purchaseForeignCurrencySubTab() {
+        if (purchaseForeignCurrencySubTab == null) {
+            purchaseForeignCurrencySubTab = new PurchaseForeignCurrencySubTab();
+        }
+        return purchaseForeignCurrencySubTab;
     }
 }
