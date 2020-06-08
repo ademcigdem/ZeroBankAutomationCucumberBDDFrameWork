@@ -1,33 +1,33 @@
-@ZB_004 @purchase_currency
-Feature: Purchase Foreign Currency
+@ZB_004 @pay_bills
+Feature: Pay Bills all page verifications
 
   Background:
     Given the user is logged in
-    And the user accesses the "Pay Bills"
-    Then the user accesses the "Purchase Foreign Currency" tab
+    Then the user accesses the "Pay Bills"
+    When  the "Pay Bills" page should be displayed
 
-  Scenario: Available currencies
+  @positive
+  Scenario: Successful pay operation
+    And the user completes a Pay operation with these "100" and "2020-09-09"
+    Then message "The payment was successfully submitted." should be displayed
 
-    Then following currencies should be available
-      | Australia (dollar)    |
-      | Canada (dollar)       |
-      | Switzerland (franc)   |
-      | China (yuan)          |
-      | Denmark (krone)       |
-      | Eurozone (euro)       |
-      | Great Britain (pound) |
-      | Japan (yen)           |
-      | Mexico (peso)         |
-      | Norway (krone)        |
-      | New Zealand (dollar)  |
-      | Singapore (dollar)    |
+  @negative
+  Scenario: Unsuccessful pay operation with blank amount
+    And the user completes a Pay operation with these "" and "2020-09-09"
+    Then validation message "Please fill in this field." should be displayed at "amount"
 
-  Scenario: Error message for not selecting currency
 
-    When user tries to calculate cost without selecting a currency
-    Then error message should be displayed
+  @negative
+  Scenario: Unsuccessful pay operation with blank date
+    And the user completes a Pay operation with these "1000" and ""
+    Then validation message "Please fill in this field." should be displayed at "date"
 
-  Scenario: Error message for not entering value
+  @negative
+  Scenario: Unsuccessful pay operation with invalid amount
+    And the user completes a Pay operation with these " abc*/_+" and "2020-09-09"
+    Then validation message "Please fill in this field." should be displayed at "amount"
 
-    When user tries to calculate cost without entering a value
-    Then error message should be displayed
+  @negative
+  Scenario: Unsuccessful pay operation with invalid date
+    And the user completes a Pay operation with these "5000" and "abcd"
+    Then validation message "Please fill in this field." should be displayed at "date"
