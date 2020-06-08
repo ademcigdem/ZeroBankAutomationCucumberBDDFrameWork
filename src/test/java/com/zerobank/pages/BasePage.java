@@ -1,7 +1,12 @@
 package com.zerobank.pages;
 
-import com.zerobank.utilities.BrowserUtils;
+
+
+
+
 import com.zerobank.utilities.Driver;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,14 +17,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+import static com.zerobank.utilities.BrowserUtils.*;
+import static com.zerobank.utilities.Driver.*;
 import static org.junit.Assert.*;
 
 public abstract class BasePage {
     public BasePage(){
-        PageFactory.initElements(Driver.get(),this );
+        PageFactory.initElements(get(),this );
     }
 
-    Actions action = new Actions(Driver.get());
+    Actions action = new Actions(get());
 
     @FindBy(linkText = "Account Summary")
     public WebElement accountSummaryBtn;
@@ -67,13 +74,9 @@ public abstract class BasePage {
 
 
 
-
-
-
-
     /**
      * This method use subTabTitle and
-     * @return subTab Title texts as sting
+     * @return subTab Title texts as string
      */
     public String getSubTabTitleText(){
         return subTabTitle.getText();
@@ -84,7 +87,7 @@ public abstract class BasePage {
      * @return list of sub titles texts as a string
      */
     public List<String> getSubTabTitlesListTexts(){
-        return BrowserUtils.getElementsText(subTabTitlesList);
+        return getElementsText(subTabTitlesList);
     }
 
 
@@ -94,8 +97,7 @@ public abstract class BasePage {
      */
 
     public void verifyToTitle(String expectedTitle){
-
-        Assert.assertEquals(expectedTitle, Driver.get().getTitle());
+        Assert.assertEquals(expectedTitle, get().getTitle());
     }
 
 
@@ -121,7 +123,7 @@ public abstract class BasePage {
     public void navigateToTab(String tabName){
         try{
             //   BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath("//a[.='"+tabName+"']")));
-            Driver.get().findElement(By.xpath("//a[.='"+tabName+"']")).click();
+            get().findElement(By.xpath("//a[.='"+tabName+"']")).click();
         }catch (Exception e){
             e.printStackTrace();
         }
