@@ -1,9 +1,9 @@
 package com.zerobank.stepdefnitions;
 
-import com.zerobank.utilities.Driver;
+
 import com.zerobank.utilities.Pages;
 import io.cucumber.java.en.*;
-import org.junit.Assert;
+
 
 public class TopPageStepDef {
 

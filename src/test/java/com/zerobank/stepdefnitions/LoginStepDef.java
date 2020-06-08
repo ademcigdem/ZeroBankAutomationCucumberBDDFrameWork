@@ -15,9 +15,9 @@ public class LoginStepDef {
         page.loginPage().login();
     }
 
-    @Given("the user should not be able to login with wrong credentials")
-    public void the_user_should_not_be_able_to_login_with_wrong_credentials() {
-        page.loginPage().loginAs("userName","passWord");
+    @Given("the user should not be able to login with {string} and {string} credentials")
+    public void the_user_should_not_be_able_to_login_with_wrong_credentials(String username,String password) {
+        page.loginPage().loginAs(username,password);
     }
 
 
@@ -28,9 +28,9 @@ public class LoginStepDef {
         Assert.assertEquals("Login and/or password are wrong.", page.loginPage().getErrorMessage());
     }
 
-    @Given("the user should not be able to login with blank credentials")
-    public void the_user_should_not_be_able_to_login_with_blank_credentials()
-    {
-        page.loginPage().loginAs("","");
-    }
+//    @Given("the user should not be able to login with blank credentials")
+//    public void the_user_should_not_be_able_to_login_with_blank_credentials()
+//    {
+//        page.loginPage().loginAs("","");
+//    }
 }
