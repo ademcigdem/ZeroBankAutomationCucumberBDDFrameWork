@@ -22,6 +22,7 @@ import static com.zerobank.utilities.Driver.*;
 import static org.junit.Assert.*;
 
 public abstract class BasePage {
+
     public BasePage(){
         PageFactory.initElements(get(),this );
     }

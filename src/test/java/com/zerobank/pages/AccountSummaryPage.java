@@ -10,6 +10,7 @@ import java.util.List;
 
 
 public class AccountSummaryPage extends BasePage {
+
     @FindBy(xpath = "//h2")
     public List<WebElement> accountTypesList;
 
