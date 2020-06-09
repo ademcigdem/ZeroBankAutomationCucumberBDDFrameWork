@@ -1,5 +1,6 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BasePage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.junit.Assert;
@@ -54,16 +55,21 @@ public class AccountSummaryPage extends BasePage {
     public List<WebElement> loanAccounttableHeaderList;
 
 
-
-
     //  (//thead/tr[1])[1]    thead
     //  //td//a[.='Savings']   rowlar stringle
 
-
+    /**
+     * This method verify all based account types on pages with @param
+     * @param expectedList
+     */
     public void verifyAccountTypeListText(List<String> expectedList){
         Assert.assertEquals(expectedList, BrowserUtils.getElementsText(accountTypesList));
     }
 
+    /**
+     * This method verify Credit Card tables header texts with @param
+     * @param tableColumnsList
+     */
     public void verifyCreditCardTableColumns (List<String> tableColumnsList){
         // String table names.....
         ////h2[.='Cash Accounts'] /following-sibling::div //tr[1])[1]

@@ -86,6 +86,7 @@
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>
+                                <param>**/failedcucumber*.json</param>
                             </jsonFiles>
                         </configuration>
                     </execution>

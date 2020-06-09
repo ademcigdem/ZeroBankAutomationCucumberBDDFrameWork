@@ -1,4 +1,4 @@
-package com.zerobank.stepdefnitions;
+package com.zerobank.stepdefnitions.account_activity;
 
 
 import com.zerobank.utilities.Pages;

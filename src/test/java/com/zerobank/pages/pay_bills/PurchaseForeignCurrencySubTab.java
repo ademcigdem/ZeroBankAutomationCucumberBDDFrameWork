@@ -1,6 +1,6 @@
 package com.zerobank.pages.pay_bills;
 
-import com.zerobank.pages.BasePage;
+import com.zerobank.utilities.BasePage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.junit.Assert;

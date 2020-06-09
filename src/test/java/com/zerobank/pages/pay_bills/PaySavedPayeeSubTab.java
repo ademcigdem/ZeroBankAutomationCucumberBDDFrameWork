@@ -1,6 +1,6 @@
 package com.zerobank.pages.pay_bills;
 
-import com.zerobank.pages.BasePage;
+import com.zerobank.utilities.BasePage;
 import com.zerobank.utilities.ConfigurationReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +22,7 @@ public class PaySavedPayeeSubTab extends BasePage {
     public WebElement payBtn;
 
     /**
-     * This method will done pay operation for user with these datas;
+     * This method will done pay operation for user with these data;
      * You can use it for @positive(successful) and @negative(unsuccessful) Scenarios
      * @param amount
      * @param date

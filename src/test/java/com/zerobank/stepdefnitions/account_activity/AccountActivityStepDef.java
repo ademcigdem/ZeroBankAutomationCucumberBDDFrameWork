@@ -1,4 +1,4 @@
-package com.zerobank.stepdefnitions;
+package com.zerobank.stepdefnitions.account_activity;
 
 import com.zerobank.utilities.Pages;
 import io.cucumber.java.en.*;
@@ -10,7 +10,6 @@ public class AccountActivityStepDef {
 
     @Then("the account drop down default option should be {string}")
     public void the_drop_down_default_option_should_be( String defaultValue) {
-
         pages.accountActivity().verifyDropDownDefaultOption(defaultValue);
     }
 

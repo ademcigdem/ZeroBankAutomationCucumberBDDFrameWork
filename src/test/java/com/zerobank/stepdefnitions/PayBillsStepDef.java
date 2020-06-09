@@ -14,6 +14,6 @@ public class PayBillsStepDef {
 
     @Then("validation message {string} should be displayed at {string}")
     public void validation_message_should_be_displayed(String message, String inputName) {
-        pages.payBillsPage().verifyValidationErrorMessage(message,inputName);
+     pages.payBillsPage().verifyValidationErrorMessage(message,inputName);
     }
 }

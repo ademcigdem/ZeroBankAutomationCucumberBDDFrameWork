@@ -1,8 +1,7 @@
 package com.zerobank.pages.pay_bills;
 
 
-
-import com.zerobank.pages.BasePage;
+import com.zerobank.utilities.BasePage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.junit.Assert;
@@ -19,21 +18,20 @@ public class PayBillsPage extends BasePage {
     public List<WebElement> subTabs;
 
 
-    @FindBy (id = "alert_content")
+    @FindBy(id = "alert_content")
     public WebElement alertSuccessMessage;
 
 
-
-
-    public void verifyAlertSuccessMessage(String expectedMessage){
-        Assert.assertTrue("message"+ alertSuccessMessage.getText()+" , expected" + expectedMessage ,alertSuccessMessage.isDisplayed());
+    public void verifyAlertSuccessMessage(String expectedMessage) {
+        Assert.assertTrue("message" + alertSuccessMessage.getText() + " , expected" + expectedMessage, alertSuccessMessage.isDisplayed());
         Assert.assertEquals(expectedMessage, alertSuccessMessage.getText());
     }
 
     /**
      * this method will navigate subTabs
+     *
      * @param subTabName comes form feature
-     * it will wait for clickablility and click
+     *                   it will wait for clickablility and click
      */
     public void navigateToSubTabs(String subTabName) {
         BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath("//li[contains(@class,'ui-state-default ui-corner-top')]//a[contains(text(),'" + subTabName + "')]")), 5).click();
@@ -43,18 +41,23 @@ public class PayBillsPage extends BasePage {
     /**
      * This method verify that relevant input validation error message and display
      * It takes expected message and relevant input name value, it passes assertion
+     *
      * @param message
      * @param inputName
      */
-    public void verifyValidationErrorMessage(String message, String inputName){
-        JavascriptExecutor js = (JavascriptExecutor)Driver.get();
-        WebElement field = Driver.get().findElement(By.cssSelector("input[name='"+inputName+"']"));
-        Boolean is_valid = (Boolean)js.executeScript("return arguments[0].checkValidity();", field);
-        String actualMessage = (String)js.executeScript("return arguments[0].validationMessage;", field);
-        Assert.assertEquals(message,actualMessage);
-        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;",field);
+    public void verifyValidationErrorMessage(String message, String inputName) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.get();
+        WebElement field = Driver.get().findElement(By.cssSelector("input[name='" + inputName + "']"));
+
+
+        //field.getAttribute("validationMessage");
+        //        Boolean is_valid = (Boolean)js.executeScript("return arguments[0].checkValidity();", field);
+        String actualMessage = (String) js.executeScript("return arguments[0].validationMessage;", field);
+        Assert.assertEquals(message, actualMessage);
+        Assert.assertNotEquals("http://zero.webappsecurity.com/bank/pay-bills-saved-payee.html", Driver.get().getCurrentUrl());
+        //   boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;",field);
         //Assert.assertFalse(is_valid);
-        System.out.println("isRequired = " + isRequired);
+        //  System.out.println("isRequired = " + isRequired);
         //  BrowserUtils.waitFor(2);
         // Assert.assertTrue((Boolean)((JavascriptExecutor)Driver.get()).executeScript("return arguments[0].validity.valid;", field));
         //Assert.assertTrue(isRequired);
