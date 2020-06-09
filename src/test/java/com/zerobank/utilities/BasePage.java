@@ -1,16 +1,9 @@
-package com.zerobank.pages;
+package com.zerobank.utilities;
 
-
-
-
-
-import com.zerobank.utilities.Driver;
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
+
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +12,6 @@ import java.util.List;
 
 import static com.zerobank.utilities.BrowserUtils.*;
 import static com.zerobank.utilities.Driver.*;
-import static org.junit.Assert.*;
 
 public abstract class BasePage {
 
@@ -92,6 +84,7 @@ public abstract class BasePage {
     }
 
 
+
     /**
      * This method verify the page/tab title
      * @param expectedTitle
@@ -118,7 +111,7 @@ public abstract class BasePage {
     }
 
     /**
-     * Method works for the navigate to all tab.@
+     * This method perform navigation for relevant all main tabs for given parameter
      * @param tabName
      */
     public void navigateToTab(String tabName){
@@ -127,6 +120,7 @@ public abstract class BasePage {
             get().findElement(By.xpath("//a[.='"+tabName+"']")).click();
         }catch (Exception e){
             e.printStackTrace();
+            System.out.println("Check Input Tab Name = " + e);
         }
     }
 

@@ -17,16 +17,16 @@ Feature: Only authorized users should be able to login to the application.
     Then login error message should be displayed
 
 
-  @negative @outline
-  Scenario Outline: Login with <type>
-    Given the user should not be able to login with "<userName>" and "<Password>" credentials
-    Then login error message should be displayed
-    Examples: Credential Informations
-      | userName | Password | type                         |
-      | username | PASSword | Wrong Password               |
-      | UserNAME | password | Wrong User Name              |
-      | UserNAME | Pasword  | Wrong User Name and Password |
-      |          | password | Blank User Name              |
-      | username |          | Blank Password               |
-      |          |          | Blank User Name and Password |
+#  @negative @outline
+#  Scenario Outline: Login with <type>
+#    Given the user should not be able to login with "<userName>" and "<Password>" credentials
+#    Then login error message should be displayed
+#    Examples: Credential Informations
+#      | userName | Password | type                         |
+#      | username | PASSword | Wrong Password               |
+#      | UserNAME | password | Wrong User Name              |
+#      | UserNAME | Pasword  | Wrong User Name and Password |
+#      |          | password | Blank User Name              |
+#      | username |          | Blank Password               |
+#      |          |          | Blank User Name and Password |
 

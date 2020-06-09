@@ -16,7 +16,6 @@ Feature: Pay Bills all page verifications
     And the user completes a Pay operation with these "" and "2020-09-09"
     Then validation message "Please fill in this field." should be displayed at "amount"
 
-
   @negative
   Scenario: Unsuccessful pay operation with blank date
     And the user completes a Pay operation with these "1000" and ""
@@ -27,7 +26,9 @@ Feature: Pay Bills all page verifications
     And the user completes a Pay operation with these " abc*/_+" and "2020-09-09"
     Then validation message "Please fill in this field." should be displayed at "amount"
 
-  @negative
+  @negative @wip
   Scenario: Unsuccessful pay operation with invalid date
     And the user completes a Pay operation with these "5000" and "abcd"
     Then validation message "Please fill in this field." should be displayed at "date"
+
+

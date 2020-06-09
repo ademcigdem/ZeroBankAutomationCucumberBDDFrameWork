@@ -1,7 +1,7 @@
-@ZB_005
-Feature: Navigating to specific accounts
+@ZB_005 @navigating_account_activity_outline
+Feature: Navigating to specific accounts in Accounts Activity
 
-   @navigating_outline
+
   Scenario Outline: Different Types <tab_module> redirect verify to <selected_drop_down>
     Given the user is logged in
     And the user accesses the "<module_name>"
