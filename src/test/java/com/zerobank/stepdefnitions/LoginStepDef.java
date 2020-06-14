@@ -21,16 +21,11 @@ public class LoginStepDef {
     }
 
 
-    /////  put this asser in page
+
     @Then("login error message should be displayed")
     public void login_error_message_should_be_displayed() {
         Assert.assertTrue(page.loginPage().errorMessage.isDisplayed());
         Assert.assertEquals("Login and/or password are wrong.", page.loginPage().getErrorMessage());
     }
 
-//    @Given("the user should not be able to login with blank credentials")
-//    public void the_user_should_not_be_able_to_login_with_blank_credentials()
-//    {
-//        page.loginPage().loginAs("","");
-//    }
 }
