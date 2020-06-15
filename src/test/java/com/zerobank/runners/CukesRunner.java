@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 
 
         dryRun = false,
-        tags = "@negative and @outline and @pay_bills"
+        tags = "@ZB_009"
 )
 public class CukesRunner {
 }
