@@ -3,12 +3,13 @@ package com.zerobank.utilities;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Function;
 
 
 public class BrowserUtils {
@@ -374,6 +375,40 @@ public class BrowserUtils {
     public static void waitForPresenceOfElement(By by, long time) {
         new WebDriverWait(Driver.get(), time).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
+    /**
+     * This method for FluentWait
+     * @param webElement
+     * @param timeinsec
+     * @return
+     */
+    public static WebElement fluentWait(final WebElement webElement, int timeinsec) {
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.get())
+                .withTimeout(Duration.ofSeconds(timeinsec))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class);
+        WebElement element = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return webElement;
+            }
+        });
+        return element;
+    }
+
+    /**
+     * Selects a random value from a dropdown list and returns the selected Web Element
+     *
+     * @param select
+     * @return
+     */
+    public static WebElement selectRandomTextFromDropdown(Select select) {
+        Random random = new Random();
+        List<WebElement> weblist = select.getOptions();
+        int optionIndex = 1 + random.nextInt(weblist.size() - 1);
+        select.selectByIndex(optionIndex);
+        return select.getFirstSelectedOption();
+    }
+
 
 
 
