@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import static com.zerobank.utilities.BrowserUtils.getElementsText;
 
@@ -175,11 +178,41 @@ public class AccountActivityPage extends BasePage {
      * @param expectedToDate
      */
     public void verifyDateBetweenFromTo(String expectedFromDate, String expectedToDate) {
-        Assert.assertTrue(Integer.parseInt(tableDateRowElementsList.get(tableDateRowElementsList.size() - 1).getText().replace("-", "")) >= Integer.parseInt(expectedFromDate.replace("-", "")));
-        Assert.assertTrue(Integer.parseInt(tableDateRowElementsList.get(0).getText().replace("-", "")) <= Integer.parseInt(expectedToDate.replace("-", "")));
+        Assert.assertTrue(Integer.parseInt(tableDateRowElementsList.get(tableDateRowElementsList.size() - 1).getText().replace("-", ""))
+                >= Integer.parseInt(expectedFromDate.replace("-", "")));
+        Assert.assertTrue(Integer.parseInt(tableDateRowElementsList.get(0).getText().replace("-", ""))
+                <= Integer.parseInt(expectedToDate.replace("-", "")));
     }
+
+
+
+    public void verifyDateBetweenFromToViaDateClass(String expectedFromDate, String expectedToDate){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date fromDate = simpleDateFormat.parse(expectedFromDate);//01.09
+            Date toDate = simpleDateFormat.parse(expectedToDate);//06.09
+            List<String> actualDatesString = BrowserUtils.getElementsText(tableDateDiscriptionElementsList);
+            List<Date> actualDates = new ArrayList<>();
+            for (String dates : actualDatesString) {
+                actualDates.add(simpleDateFormat.parse(dates));
+            }
+
+            boolean check=true;
+            for (Date actualDate : actualDates) {
+                if(actualDate.before(fromDate)||actualDate.after(toDate)){
+                    check=false;
+                }
+                Assert.assertTrue("Date is are not between FromDate to ToDate",check);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Assert.fail("Wrong Date Format,Correct format is: \"yyyy-MM-dd\"");
+        }
+    }
+
+
     /**
-     * This method verify that whenwe change the search dates, this method find and check dates
+     * This method verify that when we change the search dates, this method find and check dates
      * @param changedDate
      */
     public void verifyNotContainTransactionsDated(String changedDate) {
