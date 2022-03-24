@@ -1,8 +1,8 @@
-# ZeroBankAutomationCucumberBDDFrameWork
+# Zero Bank Automation CucumberBDD FrameWork
 
 Java 8 and Maven based created project using User Interface practice page
 
-The Project created base on the Cucumber Junit Test Framework structure.
+The Project created based on the Cucumber Junit Test Framework structure.
 
 Designing with the Sigleton Pattern and Page Object Pattern
 
