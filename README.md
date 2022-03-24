@@ -1,5 +1,4 @@
 # ZeroBankAutomationCucumberBDDFrameWork
-~Zero Bank CucumberBDD Automation Frame Work~
 
 Java 8 and Maven based created project using User Interface practice page
 
